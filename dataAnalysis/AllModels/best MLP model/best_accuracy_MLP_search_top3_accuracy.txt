@@ -1,0 +1,21 @@
+Top 3 accuracy: 0.8254
+Best top3 parameters:
+{
+    "sigma": 1,
+    "grid_size": [
+        20,
+        20
+    ],
+    "gaussian_size": [
+        35,
+        35
+    ],
+    "batch_size": 32,
+    "dropout": 0.5,
+    "reg_term": 0.001,
+    "lr": 0.001,
+    "patience": 30,
+    "min_lr": 1e-06,
+    "factor": 0.2,
+    "test_size": 0.1
+}

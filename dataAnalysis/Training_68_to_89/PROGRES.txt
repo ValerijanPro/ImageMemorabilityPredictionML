@@ -1,0 +1,265 @@
+1. 224x224, vrlo deep architecture
+2. 700x700, vrlo deep architecture
+3. 700x700, vrlo deep architecture, sa Gausom malim, 5 epoga 0.03
+4. 700x700, vrlo deep architecture, sa Gausom velikim, ppda * 1.5
+- smanjio sam 30-120 samo fixations da se gledjau
+- dodao sam zamrljavanje Gausom, ppda * 1.5
+- 50 epoha
+
+5. resnet50 10 epoha, 224x224 input, 0.03 
+
+
+laptop:
+1. 20x20, sa 1 CNN, i odmah MLP -> 0.03
+	-sa i bez 30-120
+2. 20x20, sa 1 CNN, bez kropovanja, 0.25!
+3. 50x50, sa svim CNN, bez kropovanja, 0.25
+
+
+
+ prvih 60 koordinata, 20x20, sigma = 3, oduzet od AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 2%
+ sve koordinate     , 20x20, sigma = 3, oduzet od AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 4%
+ sve koordinate ,     20x20, sigma = 1, oduzet od AVG, sa 1 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 8%
+ prvih 60 koordinata, 20x20, sigma = 1, oduzet od AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 11%
+
+ sve koordinate     , 50x50, sigma = 5, oduzet od AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 3%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 1 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 18%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 22%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 128 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 14%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 512 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 21%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 128+128 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 17%
+ sve koordinate ,     50x50, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 17%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 22%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks, batch size 16 -> 26%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks, batch size 8 -> 22%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks, batch size 64 -> 20%
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks, batch size 16, dropout -> 26%
+ 
+ 
+
+-smanjio sam regularization L2 term, i dodao 3. CNN -> 11%
+
+ sve koordinate ,     700x700, sigma = 2, bez oduzi AVG, sa 1 CNN, L2 regularization, 100 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks -> 3% xd
+
+
+
+najbolji za sada:
+ sve koordinate ,     20x20, sigma = 2, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks, batch size 16 -> 26%
+ 
+ ZA SADA: prvih 120 ,     50x50, sigma = 4, bez oduzi AVG, sa 2 CNN, L2 regularization, 500 epochs, 256 dense, nije 0-255 data, lr 1e-3, bez callbacks, batch size 16 -> 19%
+ - samo prvo gledanje, i samo zapamcene
+
+IOVC nov izgenerisan, nije nista spec. korelacija 0.36 bez poslednjeg u hit_rate_scores i agenq outliera
+
+ToDo:
+- probati samo treniranje na observerima koji nisu imali fixation cross
+- izbaciti slike koji imaju memorabilnost ispod 70%
+!!! filtrirati sve oni koji imaju manje od 10 gresaka npr po experimentu 
+
+
+-> kolika je tacnost predictor-a koji gleda samo memorability score, bez eye tracking podataka 
+
+70,71,73,74,76,77,79,80,82,83,85,87,88,89,86,90,18,57,6,45,48,60,63,69,3,9,12,21,15,27,30,33,36,42,24,66,51,54,72,75
+
+ 
+----> trenutno se vrti: successful encoding fixations, resnet50, sa data augm i regulariz dodatim u poslednje lejere (i stavio sam 256 umesto 128 u pretposl lejer)
+
+!!!!najbolja tacnost: batch_size = defualt (32), nema regularization, nema data augmentation, nema explicitno lr ; -> 100% accuracy na trening setu, 33% na valid setu; bez zamrzavanja lejera
+
+- smanjio sam regularization term sa 1e-3 na 1e-5, stavio sam batchsize = 16, -> dobijem 21% tacnost
+PETAK, OVO ISPOD SAM POSLEDNJE SADA PROBAO, I TO SE VRTI:
+- smanjio sam regularization term sa 1e-3 na 1e-5, stavio sam default batch size (32) -> dobijem 21% tacnost
+
+Ako ne bude dobro, probaj sledece mogucnosti: stavi batch size 8, preprocessing dodaj koji je chatgpt preporucio, dataaugm manje vrednosti, skini zamrzavanje lejera, skini explicitan learning rate
+
+NEDELJA, PROMENIO SAM NA:
+batch_size = 8, skinuo sam zamrzavanje lejera -> 15% valid acc, 100% training acc
+
+Ako ne bude dobro, probaj sledece mogucnosti: preprocessing dodaj koji je chatgpt preporucio, dataaugm manje vrednosti, skini zamrzavanje lejera, skini explicitan learning rate
+
+-stavio sam podatke da budu samo od prvog gledanja successful encoding fixations
+-smanjio dataaugm vrednosti
+-nema freeze lejera -> zato bude 100% training acc
+
+-> dobio sam 100% trening, 25% valid, 120 epoha
+
+
+MANJI GAUS cemo sad da probamo -> sigma =2, i 50x50
+
+-> valid 33%, 100% training
+
+stavio sam batch size default, 1e-4 regularization term
+
+sada: samo one koji nisu imali fix cross, -> 20%
+
+SADA TRENIRAMO GRUZIC DOKTOR: probaj direktno resnet50 bez diskretizacije
+
+najnovije: samo bez fixation cross -> 17%
+
+dodao: class weights, freeze layers, dropout 0.6, reduce_lr
+
+OVO SAM POSLEDNJE PUSTIO 1.JUL 2024 16.30H:
+!!!sada probao najnovije: skinuo freeze layers -> DOBIO 30 %
+OVO SAM POSLEDNJE PUSTIO 1.JUL 2024 21.30H:
+odmah posle probaj: podela u 2 epohe sa gradual unfreeze -> 6% 
+
+#probaj da pustis poslednji deo koda sa SVM sledece -> 1%
+
+2. jul 14.00
+#posle toga: custom CNN malo opet probaj , 700x700 odmah unutra-> kriticno lose 1% 
+2. jul 15.00
+#posle toga: preprocessing dodaj, gaus (11,11) -> 16%, top5k -> 50%, balanced acc -> 20%
+2. jul 17.00
+posle toga: probaj najbolji model sa gaus (11,11) -? 26%
+3. jul 09.00
+posle toga: oversampling dodaj (poslednji kod od chatgpta) -> uzas nesto malo
+3. jul 10.00
+posle toga: najbolji resnet + diskretizacija (50x50) -> class weights; bez gausa -> 30%
+3. jul 14.00
+posle toga: RUSBoost + diskretizacija (50x50) bez Gausa, sa po 1 CNN classifier -> 35% balanced accuracy
+
+posle toga: RUSBoost + diskretizacija (50x50) Gaus 2, sa po 10 CNNova -> 35% balanced accuracy
+4. jul 10.00
+posle toga: najbolji resnet + diskretizacija (50x50) -> class weights; sa gausom (2) -> 30%
+
+posle toga: najbolji resnet + diskretizacija (50x50) -> class weights; sa gausom (5) -> 20ak posto posle 15-20 epoha
+
+4. jul 15.20
+posle toga: VGG umesto resnet (50x50) -> class weights, sa gausom (5) -> 20% valid, 50% acc, 150 epoha
+
+4. jul 23.20
+posle toga: MobileNetV2 umesto resnet (50x50) -> class weights, sa gausom (5) ->  300 epoha, 10% valid accuracy 98% trening
+
+5. jul 14.22
+posle toga: ResNet50, 50x50, Gaus 2, class weights, 150 epoha, dataaugm i na valid skupu -> 3% posle 40 epoha
+
+5. jul 15.04
+posle toga: ResNet50, 50x50, Gaus 2, class weights, 150 epoha, bez dataaugm, valid skup smo uzeli da je 20% od 20% od trening skupa, random state = 22 -> 
+
+posle toga: ResNet50, 20x20, Gaus 2, class weights
+
+6. jul 17.00
+Stari najbolji Resnet 50 -> 30%
+
+7. jul 20.35
+k-fold-cross validation -> 
+
+
+----
+
+
+basic CNN mreza bez fixationc cross-a?
+
+
+
+
+
+
+
+
+cherypick samo ne-center bias slike ako bas nista...
+
+Najbolji:
+100% training accuracy na 350. epohi, i 33% na validation epohi ako sklonimo explicitan batch size, 
+	skinemo dataaugm, dropout, i regulariz term, 
+	i bez explicitnog zamrzavanja tezina u kodu (# Freeze the layers of the base model
+for layer in base_model.layers:
+    layer.trainable = False)
+
+Drugi najbolji:
+100% trening accuracy, 30% valid accuracy, 57% top5 accuracy, batchsize default, lr reduce_lr pocetni 1e-4, l2 1e-5, dropout 0.6
+
+
+11.jul 17.50
+Skinuo sam standardScaler
+Probam sada najbolji do sada, ResNet50 , 20x20, sigma = 1, 
+
+Najbolje do sada: 
+
+20x20, sigma = 1, MLP xd, 0.1 test size, stratify, oversampling -> skoro 55%
+ILI isti ovo samo sa CUSTOM CNN , ISTO OKO 55-60%
+(oversampling sa i bez sam probao, probaj sa i bez opet, kao isa i bez class_weights)
+
+
+20.12 PROBAO SAM:
+mobileNetV2, 32x32 ulaz, 
+
+
+
+
+
+
+
+
+
+55% baseline-> oversampling, 20x20, sigma=1, classWeights, dropout0.5, 0.001 l2, MLP (512,256,30), batch_size 64,
+		 factor=0.2, patience=30, min_lr=1e-6 REDUCE LR
+ 		patience=30, restore_best_weights=True EARLY STOP
+
+
+1. batchsize 64,16,8 -> MLP 50%
+2. 20x20, sigma=2 -> 40% 
+3. 50x50, sigma=1, CNN 50%, MLP 45%
+4. 50x50, sigma=2, CNN 45%, MLP 48%
+5. 50x50, sigma=3, CNN 40%, MLP 39%
+6. 10X10, sigma=1, CNN 35%, MLP 37%
+7. 30x30, sigma=1, CNN 42%, MLP 42%
+8. 80x80, sigma=1, CNN 45%, MLP 40%
+
+9. randomForest -> 60%
+10. SVM -> 53%
+
+
+-> k-fold-cross validation -> oko 50ak %
+-> vise manjih slojeva (od po 64 neurona) -> lose vrlo
+-> data augmentation (pomocu brightness, beli sum, kontrast) -> malecna promena 1%, na MLP obicnom probano
+
+12. jul 17.55
+-> leave-one-out cross validation CEKAM
+
+15.jul 10.43
+0.6 top1 accuracy
+0.6909090876579285 top5 accuracy
+MLP
+
+0.6 top1 accuracy
+0.6727272868156433 top3 accuracy
+MLP
+
+Probaj ladno mozda i bez gausa (ova poslednja dva rezultata sam dobio bez Gausa, ali PROVERI jos jednom, pusti par puta).
+-> valjda u MasterNNTraining, 
+
+Probaj u Brut Fors sledeci put kad zavrsi sve ove kombinacije, da proba i samo da nema gausa uopste 
+18.7. 00.21
+-> desio se memory error. Probam sa manjim opsegom parametara; takodje rename sam output folder u "best MLP model"
+ali je ovo zapamtio do sada kao najbolji setup:
+
+Best accuracy: 0.6727
+Best parameters:
+{
+    "sigma": 1,
+    "grid_size": [
+        20,
+        20
+    ],
+    "gaussian_size": [
+        11,
+        11
+    ],
+    "batch_size": 48,
+    "dropout": 0.5,
+    "reg_term": 0.001,
+    "lr": 0.001,
+    "patience": 30,
+    "min_lr": 1e-06,
+    "factor": 0.2
+}
+
+-> takodje, dodao sam (1, 1) kao gaussian sizes (da mozda cak i nema gausa, pa da probamo sa time); 
+pustam BrutFors onda u 00.29 , restartujem ga 19.jula u 7 ujutru, jer je memory loss
+
+- sled korak ce biti da prodjem kroz ceo dataset (i pozitivne i negativne fiksacije), i proguram kroz model
+i za svaku sliku da iscrtam onaj grafik kao u svesci, i da nadjem threshold kojem da verujem koji odvaja successful i unsuccesful fixacije
+
+KRISTINA JE LJUBAV DUSASTA JA NJU MNOGO LOLIM <3
+KRISTINA: LYTOO

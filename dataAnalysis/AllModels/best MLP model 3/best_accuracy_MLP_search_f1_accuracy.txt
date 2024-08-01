@@ -1,0 +1,21 @@
+Top f1 accuracy: 0.6389
+Best f1 parameters:
+{
+    "sigma": 1,
+    "grid_size": [
+        20,
+        20
+    ],
+    "gaussian_size": [
+        19,
+        19
+    ],
+    "batch_size": 176,
+    "dropout": 0.5,
+    "reg_term": 0.0001,
+    "lr": 0.001,
+    "patience": 30,
+    "min_lr": 1e-06,
+    "factor": 0.2,
+    "test_size": 0.1
+}

@@ -1,0 +1,3 @@
+- memorability MEAN, STD
+	Mean = 76.1845
+	STD = 8.9021

@@ -1,0 +1,21 @@
+Top per_class accuracy: 0.5917
+Best per class parameters:
+{
+    "sigma": 1,
+    "grid_size": [
+        40,
+        40
+    ],
+    "gaussian_size": [
+        35,
+        35
+    ],
+    "batch_size": 32,
+    "dropout": 0.5,
+    "reg_term": 0.0001,
+    "lr": 0.001,
+    "patience": 30,
+    "min_lr": 1e-06,
+    "factor": 0.2,
+    "test_size": 0.15
+}
