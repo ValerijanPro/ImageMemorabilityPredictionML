@@ -1,0 +1,67 @@
+5*4*4*2*3
+20*8*3
+480
+
+480*15 =
+4800 + 480*5 = 7200 iterations
+Test, gaus, batch, reg, grid
+
+3 4 4 2 5
+
+4 * 4 * 2 * 5 * 15
+48 * 30
+
+2 * 4 * 4 * 2 * 5 * 15 = 4800
+1 * 4 * 4 * 2 * 5 * 15 = 2400
+1 * 4 * 4 * 2 * 5 * 15 = 2400
+
+60:460 = 7200:x
+
+- brut fors koji radim
+	-> dodao si memory cleaner na kraju svake iteracije, pa probaj sa time
+	!! citaj Vajsovu himnu
+	-> samo jedno pustanje i prekini, dodaj da vidis da li je 26 stv:
+		print(len(fixation_maps['targetImages\\sun_aesdwymqhhiewhyo.jpg'])) kad se izgenerisu mape
+	-> zatim probaj da izbacis poslednje po IOVC slike (poslednjih 6)
+	* bonus: Anina ideja, da salmapa bude izlaz
+
+- memorability predictor by image napravi
+-> 63.8% tacnosti, za sve slike, 20% split train-test, 0 machine learning, samo podatke iz prvih 80% koristim za drugih 20%
+-> 63.6% tacnosti, ako izbacim po 3 sa pocetka i kraja
+-> 63% tacnosti, ako izbacim po 7 sa pocetka i kraja
+-> 62.5% tacnosti, ako izbacim po 11 sa pocetka i kraja
+
+
+- threshold za succ/unsucc (dictionary za svaku sliku)
+-> izbacene najgore IOVC slike, probaj da pravis dictionary i threshold za svaku sliku
+
+***ovde si***
+- IOVC sracunaj MEAN , STD
+	holistic IOVC: Mean = 0.9276 (STD = 0.0324)
+	first view IOVC: Mean = 0.7698 (STD = 0.0694)
+	second view IOVC: Mean = 0.9287 (STD = 0.0381)
+
+- memorability MEAN, STD
+	Mean = 76.1845
+	STD = 8.9021
+
+FIGRIM Across category memorability:
+	Mean = 50.91
+	STD = 13.9538
+
+T test:
+(T test radimo, a ne Z test, jer ima samo 30 podataka)
+t_statistic, p_value
+46.5553469106535 1.225944349875338e-47
+posto je p_value manji od bilo kog konvencionalnog nivoa (0.05, 0.01, 0.001), ima statisticke razlike.
+
+
+
+
+
+- pisanje rada -> PDF procitaj od Nanta
+
+18 16 15 14 17 16 15 14 13 13 9 17 14 17 14 17 14 15 17 15 14 13 15 13 13 14 17 11 12
+
+0.258 0.267 0.267 0.295 0.329 0.383 0.394 0.415 0.432 0.474 0.474 0.477 0.481 0.493 0.512 0.525 0.541 0.542 0.557 0.560 0.561 0.600 0.618 0.629 0.632 0.638 0.674 0.727 0.733 0.785
+
