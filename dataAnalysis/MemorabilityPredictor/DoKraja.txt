@@ -42,8 +42,8 @@ Test, gaus, batch, reg, grid
 	second view IOVC: Mean = 0.9287 (STD = 0.0381)
 
 - memorability MEAN, STD
-	Mean = 76.1845
-	STD = 8.9021
+	Mean = 76.5376
+	STD = 8.9733
 
 FIGRIM Across category memorability:
 	Mean = 50.91
@@ -52,7 +52,7 @@ FIGRIM Across category memorability:
 T test:
 (T test radimo, a ne Z test, jer ima samo 30 podataka)
 t_statistic, p_value
-46.5553469106535 1.225944349875338e-47
+46.401539293249634 1.4780323632875872e-47
 posto je p_value manji od bilo kog konvencionalnog nivoa (0.05, 0.01, 0.001), ima statisticke razlike.
 
 
