@@ -8,7 +8,7 @@ Predicting image memorability / recognition outcomes using eye-tracking fixation
 - Model's Output: (1) image class among N images, (2) image remembered vs not-remembered confidence score
 
 ### Demo
-![Model pipeline](pipeline.pdf)
+![Model pipeline](1.png)![Model pipeline](2.png)
 
 ## Data used:
 FIGRIM (Bylinskii et al., MIT, 2015): ([link] (http://dx.doi.org/10.1016/j.visres.2015.03.005))
