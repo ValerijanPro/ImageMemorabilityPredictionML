@@ -1,19 +1,19 @@
 # Image Memorability Prediction from Eye-Tracking
 
 Predicting image memorability / recognition outcomes using eye-tracking fixation data.
-(experiments on FIGRIM + custom memorability experiment.)
 
-## Demo (what you get)
+##  What this repo contains:
 - Trained model for memorability prediction on static images
-- Model Input: fixation maps / gaze-derived features
-- Model Output: (1) image class among N images, (2) remembered vs not-remembered confidence score (or success vs unsuccessful viewing)
+- Model' Input: fixation maps
+- Model's Output: (1) image class among N images, (2) image remembered vs not-remembered confidence score
 
-# Poster
+### Demo
+Add a figure/GIF here: `assets/demo.gif` (recommended)
 
-### Data used:
-FIGRIM (Bylinskii et al., MIT, 2015): (link in paper / instructions)
+## Data used:
+FIGRIM (Bylinskii et al., MIT, 2015): ([link] (http://dx.doi.org/10.1016/j.visres.2015.03.005))
 
-My collected dataset: not included (privacy);
+## My collected dataset: not included (privacy);
 
 #### Results:
 
