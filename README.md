@@ -18,7 +18,7 @@ FIGRIM (Bylinskii et al., MIT, 2015): ([link] (http://dx.doi.org/10.1016/j.visre
 ## Results (summary)
 - Trained model with image classification accuracy (30 classes) of 92.35% (not publicly available)
 - Memorability prediction evaluated via IOVC-based metrics
-- Additional inference-thresholding stage used to separate successful vs unsuccessful viewings [Inteference_Thresholding](inference_tresholding.png)
+- Additional inference-thresholding stage used to separate successful vs unsuccessful viewings [Inteference_Thresholding](inf-tresholding.png)
 
 ## Reproducibility
 - Python: 3.9
