@@ -1,1 +1,12 @@
-90experiments/
+# model artifacts
+*.h5
+*.keras
+*.ckpt
+*.pt
+*.pth
+*.onnx
+
+# large outputs
+**/AllModels/**
+**/models/**
+**/checkpoints/**
