@@ -5,8 +5,11 @@
 *.pt
 *.pth
 *.onnx
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
 
 # large outputs
 **/AllModels/**
 **/models/**
 **/checkpoints/**
+
