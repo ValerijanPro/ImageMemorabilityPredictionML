@@ -9,7 +9,7 @@ how visual attention patterns (eye fixations) can be transformed into spatial re
 2) **whether it will be remembered** (memorability / recognition outcome).
 
 The data for this research was gathered through a **real-world scientific experiment** inside the **Innovation Center of the School of Electrical Engineering**, Belgrade.
-More than 850 participant eye-tracking data was gathered.
+More than **850 participant eye-tracking data** was gathered.
 
 ## Demo (pipeline)
 ![Poster overview](assets/1.png)
