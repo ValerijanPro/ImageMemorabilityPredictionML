@@ -10,6 +10,8 @@ This repository is a **research demonstration** of how visual attention patterns
 The data for this research was gathered through a **real-world scientific experiment** inside the **Innovation Center of the School of Electrical Engineering**, Belgrade.
 More than **850 participant eye-tracking data** was gathered.
 
+Parts of this work were published in an international conference and a national conference.¹
+
 ## Demo (pipeline)
 ![Poster overview](assets/1.png)
 
@@ -32,6 +34,13 @@ More than **850 participant eye-tracking data** was gathered.
 - `src/data_analysis/` – analysis modules (IOVC, correlations, saliency maps, rankings, etc.)  
 - `assets/` – figures used in the README / poster-style summary  
 - `target_images/` – the 30 target images used in the experiments (if publicly shareable)
+
+## References
+1. V. Matvejev, D. Drašković,  
+   *Predviđanje uspešnosti memorizacije slike pomoću modela mašinskog učenja*,  
+   Proceedings of the **31st National ICT Conference YU INFO 2025**,  
+   Kopaonik, Serbia, 2025, pp. 1–6.  
+   ISBN: 978-86-85525-33-9
 
 ## Reproducibility (best effort)
 - Python: 3.9  
