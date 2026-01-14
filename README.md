@@ -8,7 +8,7 @@ how visual attention patterns (eye fixations) can be transformed into spatial re
 1) **which image was viewed** (multi-class classification over *N* target images), and  
 2) **whether it will be remembered** (memorability / recognition outcome).
 
-The data for this research was gathered through a real-world scientific experiment inside the Innovation Center of the School of Electrical Engineering, Belgrade.
+The data for this research was gathered through a **real-world scientific experiment** inside the **Innovation Center of the School of Electrical Engineering**, Belgrade.
 More than 850 participant eye-tracking data was gathered.
 
 ## Demo (pipeline)
