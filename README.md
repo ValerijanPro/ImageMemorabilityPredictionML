@@ -3,7 +3,7 @@
 Predicting image recognition and memorability outcomes using eye-tracking fixation data (fixation maps).
 
 ## Overview
-This repository is primarily a **research / portfolio demonstration** of my Master’s work:  
+This repository is a **research demonstration** of
 how visual attention patterns (eye fixations) can be transformed into spatial representations and used to predict:
 1) **which image was viewed** (multi-class classification over *N* target images), and  
 2) **whether it will be remembered** (memorability / recognition outcome).
